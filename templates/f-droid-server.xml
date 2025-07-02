@@ -1,1 +1,23 @@
-
+<?xml version="1.0"?>
+<Container>
+  <Name>F-Droid-Repomaker-Tasks</Name>
+  <Repository>registry.gitlab.com/fdroid/repomaker:latest</Repository>
+  <Registry>https://gitlab.com/fdroid/repomaker</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <SupportURL>https://gitlab.com/fdroid/repomaker</SupportURL>
+  <ProjectURL>https://f-droid.org/</ProjectURL>
+  <Overview>
+    Background task processor for F-Droid Repomaker. This container connects to an existing PostgreSQL database and the Repomaker Web service.
+  </Overview>
+  <Category>MediaApp: Tools:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://f-droid.org/favicon.ico</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUshares/>
+  <Config Name="Repomaker Data Path" Target="/repomaker/data" Default="/mnt/user/appdata/fdroid-repomaker/data" Mode="rw" Description="Path for Repomaker application data. Should be the same as the web container." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="PostgreSQL Database URL" Target="DATABASE_URL" Default="postgresql://user:password@host:port/database" Mode="" Description="Full connection string for your existing PostgreSQL database (e.g., postgresql://repomaker:your_password@192.168.1.100:5432/repomaker_db). REPLACE user, password, host, port, and database." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Initial Command" Target="CMD" Default="bash -c './wait-for <your_web_host>:80 -- su www-data -p -s /bin/bash -c &quot;cd /repomaker && python3 manage.py process_tasks&quot;'" Mode="override" Description="DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING. Replace &lt;your_web_host&gt; with the hostname or IP of your F-Droid-Repomaker-Web container." Type="Command" Display="advanced" Required="true" Mask="false"/>
+</Container>
