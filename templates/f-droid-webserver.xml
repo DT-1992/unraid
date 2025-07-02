@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Container>
+  <Name>F-Droid-Repomaker-Web</Name>
+  <Repository>registry.gitlab.com/fdroid/repomaker:latest</Repository>
+  <Registry>https://gitlab.com/fdroid/repomaker</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <SupportURL>https://gitlab.com/fdroid/repomaker</SupportURL>
+  <ProjectURL>https://f-droid.org/</ProjectURL>
+  <Overview>
+    Web interface for F-Droid Repomaker. This container connects to an existing PostgreSQL database.
+  </Overview>
+  <Category>MediaApp: Tools:</Category>
+  <WebUI>http://[IP]:[PORT]</WebUI>
+  <TemplateURL/>
+  <Icon>https://f-droid.org/favicon.ico</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUshares/>
+  <Config Name="Repomaker Data Path" Target="/repomaker/data" Default="/mnt/user/appdata/fdroid-repomaker/data" Mode="rw" Description="Path for Repomaker application data. This will store uploaded APKs, etc." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Repomaker Host Port" Target="80" Default="8080" Mode="tcp" Description="Host port for the Repomaker web interface." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Repomaker Hostname" Target="REPOMAKER_HOSTNAME" Default="repomaker.local" Mode="" Description="Hostname to be used by the Repomaker web service." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="PostgreSQL Database URL" Target="DATABASE_URL" Default="postgresql://user:password@host:port/database" Mode="" Description="Full connection string for your existing PostgreSQL database (e.g., postgresql://repomaker:your_password@192.168.1.100:5432/repomaker_db). REPLACE user, password, host, port, and database." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Initial Command" Target="CMD" Default="bash -c './wait-for <your_db_host>:5432 -- python3 manage.py migrate && ./httpd-foreground'" Mode="override" Description="DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING. Replace &lt;your_db_host&gt; with the hostname or IP of your PostgreSQL container/server." Type="Command" Display="advanced" Required="true" Mask="false"/>
+</Container>
