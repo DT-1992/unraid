@@ -13,7 +13,7 @@
   </Overview>
   <Category>Productivity: Tools: Network: Other:</Category>
   <WebUI>http://[IP]:[PORT]</WebUI>
-  <TemplateURL/>
+  <TemplateURL>https://github.com/DT-1992/unraid/main/templates/convex.xml<TemplateURL/>
   <Icon>https://convex.dev/favicon.ico</Icon>
   <ExtraParams/>
   <PostArgs/>
