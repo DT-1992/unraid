@@ -12,7 +12,7 @@
   </Overview>
   <Category>MediaApp: Tools:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://github.com/DT-1992/unraid/main/templates/f-droid-server.xml<TemplateURL/>
   <Icon>https://f-droid.org/favicon.ico</Icon>
   <ExtraParams/>
   <PostArgs/>
